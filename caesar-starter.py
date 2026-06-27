@@ -1,4 +1,7 @@
-# Testing
+# ============================================================
+# TESTING FRAMEWORK
+# ============================================================
+
 def run_tests(tests):
     passed = 0
     for description, run_case, expected in tests:
@@ -16,6 +19,11 @@ def run_tests(tests):
             print(f"      expected: {expected!r}")
             print(f"      got:      {actual!r}")
     print(f"\n{passed}/{len(tests)} tests passed")
+
+
+# ============================================================
+# TEST CASES
+# ============================================================
 
 shift_letter_tests = [
     ("'a' shifted by 1 should give 'b'",               lambda: shift_letter('a', 1),  'b'),
@@ -38,28 +46,33 @@ is_letter_tests = [
 ]
 
 shift_string_tests = [
-    ("lowercase word shifts correctly",  lambda: shift_string("abc", 1),       "bcd"),
-    ("uppercase is preserved",           lambda: shift_string("ABC", 1),       "BCD"),
-    ("wraps at the end of the alphabet", lambda: shift_string("xyz", 1),       "yza"),
-    ("non-letters are left unchanged",   lambda: shift_string("Hi, World!", 0),"Hi, World!"),
-    ("spaces pass through untouched",    lambda: shift_string("ab cd", 1),     "bc de"),
-    ("negative shift moves backwards",   lambda: shift_string("bcd", -1),      "abc"),
+    ("lowercase word shifts correctly",  lambda: shift_string("abc", 1),        "bcd"),
+    ("uppercase is preserved",           lambda: shift_string("ABC", 1),        "BCD"),
+    ("wraps at the end of the alphabet", lambda: shift_string("xyz", 1),        "yza"),
+    ("non-letters are left unchanged",   lambda: shift_string("Hi, World!", 0), "Hi, World!"),
+    ("spaces pass through untouched",    lambda: shift_string("ab cd", 1),      "bc de"),
+    ("negative shift moves backwards",   lambda: shift_string("bcd", -1),       "abc"),
 ]
 
 encrypt_tests = [
-    ("encrypt shifts forward by the given amount", lambda: encrypt("abc", 1), "bcd"),
-    ("encrypt wraps correctly",                     lambda: encrypt("xyz", 2), "zab"),
-    ("encrypting by 0 leaves text unchanged",       lambda: encrypt("hello", 0), "hello"),
+    ("encrypt shifts forward by the given amount", lambda: encrypt("abc", 1),    "bcd"),
+    ("encrypt wraps correctly",                    lambda: encrypt("xyz", 2),    "zab"),
+    ("encrypting by 0 leaves text unchanged",      lambda: encrypt("hello", 0),  "hello"),
 ]
 
 decrypt_tests = [
-    ("decrypt shifts backwards by the given amount",  lambda: decrypt("bcd", 1), "abc"),
-    ("decrypt undoes a matching encrypt (round trip)", lambda: decrypt(encrypt("hello world", 7), 7), "hello world"),
-    ("decrypting by 0 leaves text unchanged",          lambda: decrypt("hello", 0), "hello"),
+    ("decrypt shifts backwards by the given amount",   lambda: decrypt("bcd", 1),                      "abc"),
+    ("decrypt undoes a matching encrypt (round trip)", lambda: decrypt(encrypt("hello world", 7), 7),  "hello world"),
+    ("decrypting by 0 leaves text unchanged",          lambda: decrypt("hello", 0),                    "hello"),
 ]
 
-# Subprograms
+
+# ============================================================
+# SUBPROGRAMS
+# ============================================================
 
 
-# Main program
 
+# ============================================================
+# MAIN PROGRAM
+# ============================================================
